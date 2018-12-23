@@ -1,0 +1,39 @@
+OSPF2 COMMANDS
+en
+conf t
+router osfp 10 (10 é o process ID)
+> router-id x.x.x.x
+> network 172.31.0.0 0.0.0.255 area 0 (ip + wildcard mask + "area 0" - wildcard mask = resto de subnet mask (255.255.255.255 - subnet mask))
+> network passive-interface g0/0
+
+//caso o router id nao consiga ser colocado
+clear router ospf id
+
+OSPFv3 COMMANDS
+en
+conf t
+ipv6 unicast-routing (to enable ipv6)
+router ospf 10 (10 é o Process ID)
+> router-id x.x.x.x
+> configurar a interface.
+
+CONFIGURAR INTERFACES
+//ipv4
+conf t
+interface g0/0
+ip add 172.31.1.0 255.255.255.0
+no shut
+
+//ipv6
+conf t
+interface g0/0
+ipv6 add 2001:DB8:1::1/64
+ipv6 add FE80::1 link-local (Set the Gigabit Ethernet 0/0 Link Local address to FE80::1)
+no shut
+
+COMANDOS GERAIS
+show ip protocols
+show ip ospf neighbors
+show run
+show ip route
+show ip interface brief

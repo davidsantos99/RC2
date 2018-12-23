@@ -1,0 +1,28 @@
+enable //enters on exec mode switch / router
+show running-config //shows all the info that is going on the router
+configure terminal //enters on config mode of terminal - config t makes the same thing
+hostname s1 //defines the switch / router name as s1
+exit //go back to where i was before
+line console 0 //enters on line config
+password letmein //defines the password of the router as "letmein"
+login //allows to login and to assemble the password to the switch
+enable password c1sc0 //makes "c1sc0" the main password when enable command is entered
+enable secret itsasecret //turns the enable password into a secret password with "itsasecret"
+service password-encryption //encrypts all the current passwords that have been defined
+banner motd "This is a secure system. Authorized Access Only!" //configures a message when the user don't know the password
+copy running-config startup-config //saves all the running and startup config to a file
+dir nvram //checks the flash memory on the switch
+interface vlan //enables the SVI interface for vlan
+ip address 192.168.1.1 255.255.255.0 //defines ip address and submask
+no shutdown //turns the connection up
+end //ends configuration terminal
+show interfaces vlan1
+show interface Serial0/0/0 //shows up all the info about Serial 0/0/0, + MAC address
+show arp //shows arp table
+show mac address-table //shows mac address table
+show ip route connected //shows the ip that the router is directly connected
+interface gigabitEthernet 0/0 
+ip address 192.168.10.1 255.255.255.0 //set this ip and submask to gigabitEthernet 0/0
+show ipv4 interface brief //shows all the info about ipv4 contents, if instead ipv4 we put ipv6, will show up the ipv6 contents
+
+

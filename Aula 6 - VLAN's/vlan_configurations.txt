@@ -1,0 +1,71 @@
+show vlan brief
+show interface FastEthernet 0/1 switchport
+show interfaces f0/1 trunk
+show interfaces trunk
+
+//create a VLAN
+conf t
+vlan "id"
+name "vlan name"
+end
+
+//assigning ports to vlans
+conf t
+interface f0/18
+switchport mode access
+switchport access vlan
+end
+
+//remove vlan assignment
+conf t
+interface f0/18
+no switchport access vlan
+end
+
+//delete VLAN
+conf t
+no vlan "id"
+end
+
+//Configuring IEEE 802.1q Trunk Links
+conf t
+interface "interface_id"
+switchport mode trunk
+switchport trunk native vlan "vlan_id" //vlan principal
+switchport trunk allowed vlan "vlan_list" //(10,30)
+end
+
+//Resetting the Trunk to Default State
+conf t
+interface "interface_id"
+no switchport trunk allowed vlan
+no switchport trunk native vlan
+end
+
+//Incorrect VLAN List
+conf t
+interface "interface_id"
+switchport trunk allowed vlan 10,20,99
+interface "interface_id"
+switchport trunk allowed 10,20,99
+show interfaces trunk
+
+//Configure Legacy Inter-VLAN Routing
+//Configure the VLANs on the switch and then assign the ports to their respective VLANs.
+conf t
+vlan 10
+vlan 30
+interface "interface_id"
+switchport access vlan 10
+interface "interface_id"
+switchport access vlan 30
+...
+
+//Configure Router-on-a Stick: Router Subinterface Configuration
+interface "interface_id"
+encapsulation dot1q 10 //manda a msg: router recebes info do switch do ip seguinte. 10 é o id da vlan
+ip add 172.17.10.1 255.255.255.0
+interface "interface_id"
+encapsulation dot1q 30
+ip add 172.17.30.1 255.255.255.0
+

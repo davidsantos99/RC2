@@ -1,0 +1,9 @@
+BGP
+
+router bgp "as-number"
+neighbor "ip-address" remote-as "as-number"
+network "network-address" mask "network-mask"
+
+show ip route
+show ip bgp
+show ip bgp summary
