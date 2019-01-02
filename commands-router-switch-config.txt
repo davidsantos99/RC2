@@ -24,5 +24,3 @@ show ip route connected //shows the ip that the router is directly connected
 interface gigabitEthernet 0/0 
 ip address 192.168.10.1 255.255.255.0 //set this ip and submask to gigabitEthernet 0/0
 show ipv4 interface brief //shows all the info about ipv4 contents, if instead ipv4 we put ipv6, will show up the ipv6 contents
-
-
