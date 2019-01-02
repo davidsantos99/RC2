@@ -1,0 +1,12 @@
+show ip route
+
+ipv6 route
+ivp6 unicast-routing //to enable ipv6 routing
+ipv6 route 2001:db8:acad:2::/64 fe80::2 //fe80::2 é o link-local que é utilizado como um nexthop
+ipv6 route ::/0   //Default static route matches all packets not specified in routing table
+// ::/0 mask indicates that none of the bits are required to match
+
+traceroute
+show ip interface brief
+show cdp neighbors detail
+ping 192.168.0.1 source 172.1.1.1
